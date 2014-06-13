@@ -20,3 +20,4 @@ Eventual Features
 
 
 [pomodoro technique]: http://pomodorotechnique.com
+[color scheme]: http://www.colorcombos.com/color-schemes/2605/ColorCombo2605.html
