@@ -1,4 +1,26 @@
+@import url("fonts.css");
+
 *
 {
 	margin: 0px;
+}
+
+html
+{
+	padding: 2em;
+	
+	color: #333;
+	font-size: 18px;
+	font-family: open-sans, calibri, sans-serif;
+	
+	background-image: url("greyzz.png");
+}
+
+h1
+{
+	font-size: 7rem;
+	text-align: center;
+	font-family: forque;
+	font-weight: normal;
+	letter-spacing: 0.25rem;
 }
