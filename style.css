@@ -13,14 +13,42 @@ html
 	font-size: 18px;
 	font-family: open-sans, calibri, sans-serif;
 	
+	background-color: #FCFEFD;
 	background-image: url("greyzz.png");
 }
 
 h1
 {
 	font-size: 7rem;
+	line-height: 1em;
 	text-align: center;
 	font-family: forque;
 	font-weight: normal;
-	letter-spacing: 0.25rem;
+	letter-spacing: 0.5rem;
 }
+
+div
+{
+	margin: 1em auto;
+	text-align: center;
+}
+
+button
+{
+	padding: 0.5rem 1rem;
+	
+	color: white;
+	font: inherit;
+	
+	border: none;
+	border-radius: 4px;
+	
+	cursor: pointer;
+}
+
+button#work {background-color: #E96D63;}
+button#work:hover {background-color: #F4928B;}
+button#short-break {background-color: #7FCA9F;}
+button#short-break:hover {background-color: #A5E4C1;}
+button#long-break {background-color: #F4BA70;}
+button#long-break:hover {background-color: #FACD94;}
