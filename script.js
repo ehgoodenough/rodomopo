@@ -2,31 +2,13 @@ var length_of_session = {"work": 25, "break": 5, "rebreak": 10};
 
 $(document).ready(function()
 {
-	$("button.session").click(function()
+	$("#sessions").find("button").click(function()
 	{
 		var type = $(this).attr("id");
 		var length = length_of_session[type] * 60;
 		
 		Timer.set(length);
 		Timer.start();
-	});
-	
-	$("button.session").mouseover(function()
-	{
-		if(!Timer.isActive())
-		{
-			var type = $(this).attr("id");
-			var length = length_of_session[type] * 60;
-			render(length);
-		}
-	});
-	
-	$("button.session").mouseout(function()
-	{
-		if(!Timer.isActive())
-		{
-			render(Timer.time);
-		}
 	});
 	
 	$("button#stop.operation").click(function()
@@ -48,9 +30,48 @@ $(document).ready(function()
 
 var Timer = new function()
 {
-	this.time = 0;
+	this.currentTime = 0;
+	this.originalTime = 0;
 	
-	this.interval = new function()
+	this.set = function(time)
+	{
+		this.currentTime = time;
+		this.originalTime = time;
+		
+		this._render();
+	}
+	
+	this.start = function()
+	{
+		var tick = this._tick.bind(this);
+		this._interval.initiate(tick);
+	}
+	
+	this.stop = function()
+	{
+		this._interval.terminate();
+	}
+	
+	this.isActive = function()
+	{
+		return this._interval.instance;
+	}
+	
+	this._tick = function()
+	{
+		this.currentTime -= 1;
+		
+		if(this.currentTime <= 0)
+		{
+			this._interval.terminate();
+			
+			//play sound here
+		}
+		
+		this._render();
+	}
+	
+	this._interval = new function()
 	{
 		this.initiate = function(func)
 		{
@@ -65,52 +86,19 @@ var Timer = new function()
 		}
 	}
 	
-	this.set = function(time)
+	this._render = function()
 	{
-		this.time = time;
-		render(this.time);
-	}
-	
-	this.start = function()
-	{
-		var tick = this._tick.bind(this);
-		this.interval.initiate(tick);
-	}
-	
-	this.stop = function()
-	{
-		this.interval.terminate();
-	}
-	
-	this.isActive = function()
-	{
-		return this.interval.instance;
-	}
-	
-	this._tick = function()
-	{
-		this.time -= 1;
+		var minutes = Math.floor(this.currentTime / 60);
+		var seconds = String.pad(this.currentTime % 60);
 		
-		if(this.time <= 0)
-		{
-			this.interval.terminate();
-			
-			//play sound here
-		}
+		var time = minutes + ":" + seconds;
 		
-		render(this.time);
+		$("#timer").text(time);
+		$("title").text(time + ", Romodoro");
+		
+		$("meter").attr("value", this.currentTime);
+		$("meter").attr("max", this.originalTime);
 	}
-}
-
-function render(time)
-{
-	var minutes = Math.floor(time / 60);
-	var seconds = String.pad(time % 60);
-	
-	time = minutes + ":" + seconds;
-	
-	$("#timer").text(time);
-	$("title").text(time + ", Romodoro");
 }
 
 String.pad = function(value, length, padding)

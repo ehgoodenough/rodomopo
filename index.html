@@ -11,14 +11,24 @@
 		
 		<h1>Rodomopo</h1>
 		
-		<div>
-			<button id="work" class="session">Work</button>
-			<button id="break" class="session">Break</button>
-			<button id="rebreak" class="session">Rebreak</button>
+		<div id="sessions">
+			<button id="work">
+				<span>Work</span>
+				<span>(25 mins)</span>
+			</button>
+			<button id="break">
+				<span>Break</span>
+				<span>(5 mins)</span>
+			</button>
+			<button id="rebreak">
+				<span>Rebreak</span>
+				<span>(10 mins)</span>
+			</button>
 		</div>
 		
 		<div>
 			<span id="timer">0:00</span>
+			<meter min="0" max="0" value="0">.</meter>
 		</div>
 		
 		<div>

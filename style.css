@@ -7,21 +7,24 @@
 
 html
 {
-	padding: 2em;
-	
 	color: #333;
 	font-size: 18px;
+	text-align: center;
 	font-family: open-sans, calibri, sans-serif;
 	
 	background-color: #FCFEFD;
 	background-image: url("greyzz.png");
 }
 
+body
+{
+	padding: 2em;
+}
+
 h1
 {
 	font-size: 8rem;
 	line-height: 1em;
-	text-align: center;
 	font-family: forque;
 	font-weight: normal;
 	letter-spacing: 0.5rem;
@@ -30,33 +33,104 @@ h1
 div
 {
 	margin: 1em auto;
-	text-align: center;
 }
 
-button
+/* Session Buttons */
+
+#sessions
 {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+#sessions > button
+{
+	width: 33.33%;
+	display: table-cell;
 	padding: 0.5rem 1rem;
 	
-	color: white;
-	font: inherit;
-	
 	border: none;
-	border-radius: 4px;
+	
+	font: inherit;
+	color: #FCFEFD;
 }
 
-button:focus {outline: none;}
-button:hover {cursor: pointer;}
+#sessions > button:first-of-type
+{
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
 
-button#work {background-color: #E96D63;}
-button#break {background-color: #7FCA9F;}
-button#rebreak {background-color: #F4BA70;}
+#sessions > button:last-of-type
+{
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
 
-button#work:hover {background-color: #F4928B;}
-button#break:hover {background-color: #A5E4C1;}
-button#rebreak:hover {background-color: #FACD94;}
+#sessions > button:focus {outline: none;}
+#sessions > button:hover {cursor: pointer;}
+#sessions > button > span {white-space: nowrap;}
+
+#sessions > button:nth-child(1) {background-color: #E96D63;}
+#sessions > button:nth-child(2)  {background-color: #7FCA9F;}
+#sessions > button:nth-child(3)  {background-color: #F4BA70;}
+
+#sessions > button:nth-child(1):hover  {background-color: #F4928B;}
+#sessions > button:nth-child(2):hover  {background-color: #A5E4C1;}
+#sessions > button:nth-child(3):hover  {background-color: #FACD94;}
+
+@media(max-width: 42rem)
+{
+	#sessions > button > span
+	{
+		display: block;
+	}
+}
+
+@media(max-width: 28rem)
+{
+	body
+	{
+		padding: 1em;
+	}
+	
+	#sessions > button
+	{
+		width: 100%;
+		display: block;
+	}
+	
+	#sessions > button:first-of-type
+	{
+		border-top-right-radius: 6px;
+		border-bottom-left-radius: 0px;
+	}
+	
+	#sessions > button:last-of-type
+	{
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 6px;
+	}
+	
+	#sessions > button > span
+	{
+		display: inline;
+	}
+}
+
+
 
 #timer
 {
 	font-size: 8rem;
 	font-family: forque;
+}
+
+meter
+{
+	margin: auto;
+	width: 320px;
+	height: 2rem;
+	display: block;
 }
