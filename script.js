@@ -64,8 +64,7 @@ var Timer = new function()
 		if(this.currentTime <= 0)
 		{
 			this._interval.terminate();
-			
-			//play sound here
+			new Audio("bell.wav").play();
 		}
 		
 		this._render();
