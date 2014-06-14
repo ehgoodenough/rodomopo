@@ -1,7 +1,12 @@
-todo: fix the header to be more responsive.
 todo: find an alternative for the meter tag.
-todo: play a sound when the timer is finished.
-todo: deploy to the servers on github.
+todo: restyle the operation buttons at the bottom.
 todo: rename the labels for each session.
+
 todo: note the timestamps of each session.
+todo: record each set of timestamps in local storage.
+todo: allow users to add a description to the timestamps.
+
 todo: add compatability documentation to the page.
+todo: include a handful of keyboard shortcuts.
+todo: provide statistics on your performance?
+todo: give prompts about when to finish.

@@ -13,7 +13,7 @@ html
 	font-family: open-sans, calibri, sans-serif;
 	
 	background-color: #FCFEFD;
-	background-image: url("greyzz.png");
+	/*background-image: url("greyzz.png");*/
 }
 
 body
@@ -25,11 +25,12 @@ body
 
 h1
 {
-	font-size: 8rem;
-	line-height: 1em;
-	font-family: forque;
-	font-weight: normal;
-	letter-spacing: 0.5rem;
+	line-height: 1rem;
+}
+
+h1 > img
+{
+	width: 100%;
 }
 
 div
