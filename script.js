@@ -1,4 +1,4 @@
-var length_of_session = {"work": 25, "break": 5, "rebreak": 10};
+var length_of_session = {"work": 25, "short_break": 5, "long_break": 10};
 
 $(document).ready(function()
 {
@@ -11,20 +11,22 @@ $(document).ready(function()
 		Timer.start();
 	});
 	
-	$("button#stop.operation").click(function()
+	$("#operations").find("#stop").click(function()
 	{
 		Timer.stop();
 		Timer.set(0);
 	});
 	
-	$("button#pause.operation").click(function()
+	$("#operations").find("#pauseplay").click(function()
 	{
-		Timer.stop();
-	});
-	
-	$("button#play.operation").click(function()
-	{
-		Timer.start();
+		if(Timer.isTicking())
+		{
+			Timer.stop();
+		}
+		else if(Timer.currentTime > 0)
+		{
+			Timer.start();
+		}
 	});
 });
 
@@ -45,14 +47,16 @@ var Timer = new function()
 	{
 		var tick = this._tick.bind(this);
 		this._interval.initiate(tick);
+		$("#pauseplay").addClass("toggled");
 	}
 	
 	this.stop = function()
 	{
 		this._interval.terminate();
+		$("#pauseplay").removeClass("toggled");
 	}
 	
-	this.isActive = function()
+	this.isTicking = function()
 	{
 		return this._interval.instance;
 	}
@@ -63,7 +67,7 @@ var Timer = new function()
 		
 		if(this.currentTime <= 0)
 		{
-			this._interval.terminate();
+			this.stop();
 			new Audio("bell.wav").play();
 		}
 		

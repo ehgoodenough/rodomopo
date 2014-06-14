@@ -9,7 +9,6 @@ html
 {
 	color: #333;
 	font-size: 18px;
-	text-align: center;
 	font-family: open-sans, calibri, sans-serif;
 	
 	background-color: #FCFEFD;
@@ -19,7 +18,7 @@ html
 body
 {
 	margin: auto;
-	padding: 1em;
+	padding: 1rem;
 	max-width: 784px;
 }
 
@@ -37,6 +36,7 @@ div
 {
 	margin: 1rem auto;
 	position: relative;
+	text-align: center;
 }
 
 /* Session Buttons */
@@ -118,7 +118,7 @@ div
 	}
 }
 
-/* Countdown Bar */
+/* Countdown Panel */
 
 #countdown > time
 {
@@ -142,3 +142,28 @@ div
 	overflow: hidden;
 	border-radius: 6px;
 }
+
+/* Operation Buttons */
+
+#operations > button
+{
+	width: 2.5rem;
+	height: 2.5rem;
+	border: none;
+	
+	font: inherit;
+	border-radius: 6px;
+	vertical-align: middle;
+	
+	background-size: 2rem;
+	background-position:center;
+}
+
+#operations > button:focus {outline: none;}
+#operations > button:hover {cursor: pointer;}
+
+#operations > button#stop {background-image: url("stop.png");}
+#operations > button#pauseplay {background-image: url("play.png");}
+#operations > button#pauseplay.toggled {background-image: url("pause.png");}
+#operations > button#previous {background-image: url("previous.png");}
+#operations > button#next {background-image: url("next.png");}
