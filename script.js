@@ -2,17 +2,18 @@ var length_of_session = {"work": 25, "break": 5, "rebreak": 10};
 
 $(document).ready(function()
 {
-	$("button").on("click", function()
+	$("button.session").click(function()
 	{
 		var type = $(this).attr("id");
 		var length = length_of_session[type] * 60;
 		
 		Timer.set(length);
+		Timer.start();
 	});
 	
-	$("button").on("mouseenter", function()
+	$("button.session").mouseover(function()
 	{
-		if(!Timer.interval)
+		if(!Timer.isActive())
 		{
 			var type = $(this).attr("id");
 			var length = length_of_session[type] * 60;
@@ -20,25 +21,70 @@ $(document).ready(function()
 		}
 	});
 	
-	$("button").on("mouseleave", function()
+	$("button.session").mouseout(function()
 	{
-		if(!Timer.interval)
+		if(!Timer.isActive())
 		{
-			render(0);
+			render(Timer.time);
 		}
+	});
+	
+	$("button#stop.operation").click(function()
+	{
+		Timer.stop();
+		Timer.set(0);
+	});
+	
+	$("button#pause.operation").click(function()
+	{
+		Timer.stop();
+	});
+	
+	$("button#play.operation").click(function()
+	{
+		Timer.start();
 	});
 });
 
 var Timer = new function()
 {
+	this.time = 0;
+	
+	this.interval = new function()
+	{
+		this.initiate = function(func)
+		{
+			clearInterval(this.instance);
+			this.instance = setInterval(func, 1000);
+		}
+		
+		this.terminate = function()
+		{
+			clearInterval(this.instance);
+			this.instance = undefined;
+		}
+	}
+	
 	this.set = function(time)
 	{
 		this.time = time;
-		
 		render(this.time);
-		
-		if(this.interval) {clearInterval(this.interval);}
-		this.interval = setInterval(this._tick.bind(this), 1000);
+	}
+	
+	this.start = function()
+	{
+		var tick = this._tick.bind(this);
+		this.interval.initiate(tick);
+	}
+	
+	this.stop = function()
+	{
+		this.interval.terminate();
+	}
+	
+	this.isActive = function()
+	{
+		return this.interval.instance;
 	}
 	
 	this._tick = function()
@@ -47,8 +93,7 @@ var Timer = new function()
 		
 		if(this.time <= 0)
 		{
-			clearInterval(this.interval);
-			this.interval = undefined;
+			this.interval.terminate();
 			
 			//play sound here
 		}
