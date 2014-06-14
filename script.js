@@ -97,7 +97,7 @@ var Timer = new function()
 		var time = minutes + ":" + seconds;
 		
 		$("#countdown").find("time").text(time);
-		$("title").text(time + ", Romodoro");
+		$("title").text(time + ", Rodomopo");
 		
 		$("#countdown").find("meter").attr("value", this.currentTime);
 		$("#countdown").find("meter").attr("max", this.originalTime);
