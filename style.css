@@ -18,7 +18,9 @@ html
 
 body
 {
-	padding: 2em;
+	margin: auto;
+	padding: 1em;
+	max-width: 784px;
 }
 
 h1
@@ -32,7 +34,8 @@ h1
 
 div
 {
-	margin: 1em auto;
+	margin: 1rem auto;
+	position: relative;
 }
 
 /* Session Buttons */
@@ -90,11 +93,6 @@ div
 
 @media(max-width: 28rem)
 {
-	body
-	{
-		padding: 1em;
-	}
-	
 	#sessions > button
 	{
 		width: 100%;
@@ -119,18 +117,27 @@ div
 	}
 }
 
+/* Countdown Bar */
 
-
-#timer
+#countdown > time
 {
-	font-size: 8rem;
+	font-size: 6rem;
 	font-family: forque;
+	
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	line-height: 1em;
+	position: absolute;
 }
 
-meter
+#countdown > meter
 {
+	width: 100%;
 	margin: auto;
-	width: 320px;
-	height: 2rem;
+	height: 6rem;
 	display: block;
+	
+	overflow: hidden;
+	border-radius: 6px;
 }

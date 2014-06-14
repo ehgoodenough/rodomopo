@@ -93,11 +93,11 @@ var Timer = new function()
 		
 		var time = minutes + ":" + seconds;
 		
-		$("#timer").text(time);
+		$("#countdown").find("time").text(time);
 		$("title").text(time + ", Romodoro");
 		
-		$("meter").attr("value", this.currentTime);
-		$("meter").attr("max", this.originalTime);
+		$("#countdown").find("meter").attr("value", this.currentTime);
+		$("#countdown").find("meter").attr("max", this.originalTime);
 	}
 }
 
