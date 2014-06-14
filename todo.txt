@@ -1,0 +1,7 @@
+todo: fix the header to be more responsive.
+todo: find an alternative for the meter tag.
+todo: play a sound when the timer is finished.
+todo: deploy to the servers on github.
+todo: rename the labels for each session.
+todo: note the timestamps of each session.
+todo: add compatability documentation to the page.
