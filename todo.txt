@@ -1,10 +1,7 @@
-todo: find an alternative for the meter tag.
-
 todo: note the timestamps of each session.
 todo: record each set of timestamps in local storage.
 todo: allow users to add a description to the timestamps.
 
-todo: add compatability documentation to the page.
+todo: add some about text to the page.
 todo: include a handful of keyboard shortcuts.
-todo: provide statistics on your performance?
-todo: give prompts about when to finish.
+todo: give prompts when the timer is near finishing.
