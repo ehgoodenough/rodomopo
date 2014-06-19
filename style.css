@@ -18,25 +18,20 @@ html
 body
 {
 	margin: auto;
-	padding: 1rem;
+	padding: 2rem;
 	max-width: 784px;
 }
 
-h1
+/* The Header */
+
+header > h1
 {
 	line-height: 1rem;
 }
 
-h1 > img
+header > h1 > img
 {
 	width: 100%;
-}
-
-div
-{
-	margin: 1rem auto;
-	position: relative;
-	text-align: center;
 }
 
 /* Session Buttons */
@@ -45,6 +40,7 @@ div
 {
 	width: 100%;
 	display: table;
+	margin: 1rem auto;
 	table-layout: fixed;
 }
 
@@ -84,7 +80,7 @@ div
 #sessions > button:nth-child(2):hover  {background-color: #A5E4C1;}
 #sessions > button:nth-child(3):hover  {background-color: #FACD94;}
 
-@media(max-width: 42rem)
+@media(max-width: 46rem)
 {
 	#sessions > button > span
 	{
@@ -120,9 +116,16 @@ div
 
 /* Countdown Panel */
 
+#countdown
+{
+	margin: 1rem auto;
+	position: relative;
+}
+
 #countdown > time
 {
 	font-size: 6rem;
+	text-align: center;
 	font-family: forque;
 	
 	top: 0px;
@@ -144,6 +147,12 @@ div
 }
 
 /* Operation Buttons */
+
+#operations
+{
+	margin: 1rem auto;
+	text-align: center;
+}
 
 #operations > button
 {
@@ -167,3 +176,64 @@ div
 #operations > button#pauseplay.toggled {background-image: url("pause.png");}
 #operations > button#previous {background-image: url("previous.png");}
 #operations > button#next {background-image: url("next.png");}
+
+/* Information Sections */
+
+#information
+{
+	width: 100%;
+	display: table;
+	margin: 2rem auto;
+	table-layout: fixed;
+}
+
+#information > div
+{
+	width: 50%;
+	display: table-cell;
+}
+
+#information > div:first-of-type
+{
+	padding-right: 1rem;
+}
+
+#information > div:last-of-type
+{
+	padding-left: 1rem;
+}
+
+#information > div > p
+{
+	text-indent: 2rem;
+	text-align: justify;
+}
+
+@media(max-width: 37rem)
+{
+	#information > div
+	{
+		width: 100%;
+		display: block;
+	}
+
+	#information > div:first-of-type
+	{
+		margin-bottom: 2rem;
+		padding-right: 0rem;
+	}
+
+	#information > div:last-of-type
+	{
+		margin-top: 2rem;
+		padding-left: 0rem;
+	}
+}
+
+/* The Footer */
+
+footer
+{
+	font-style: italic;
+	text-align: center;
+}
