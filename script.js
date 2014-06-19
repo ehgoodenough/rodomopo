@@ -1,11 +1,11 @@
-var length_of_session = {"work": 25, "short_break": 5, "long_break": 10};
+var length_of_session = {"work": 25 * 60, "short_break": 5 * 60, "long_break": 10 * 60};
 
 $(document).ready(function()
 {
 	$("#sessions").find("button").click(function()
 	{
 		var type = $(this).attr("id");
-		var length = length_of_session[type] * 60;
+		var length = length_of_session[type];
 		
 		Timer.set(length);
 		Timer.start();
@@ -69,6 +69,14 @@ var Timer = new function()
 		{
 			this.stop();
 			new Audio("bell.wav").play();
+		}
+
+		if(this.currentTime == 60 * 5)
+		{
+			if(this.originalTime == length_of_session["work"])
+			{
+				new Audio("ding.wav").play();
+			}
 		}
 		
 		this._render();
