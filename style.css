@@ -209,6 +209,11 @@ header > h1 > img
 	text-align: justify;
 }
 
+#information > div > ul
+{
+	padding-left: 2rem;
+}
+
 @media(max-width: 37rem)
 {
 	#information > div
