@@ -1,23 +1,23 @@
-var length_of_session = {"work": 25, "short_break": 5, "long_break": 10};
+var length_of_session = {"work": 25 * 60, "short_break": 5 * 60, "long_break": 10 * 60};
 
 $(document).ready(function()
 {
 	$("#sessions").find("button").click(function()
 	{
 		var type = $(this).attr("id");
-		var length = length_of_session[type] * 60;
+		var length = length_of_session[type];
 		
 		Timer.set(length);
 		Timer.start();
 	});
 	
-	$("#operations").find("#stop").click(function()
+	$("#stop").click(function()
 	{
 		Timer.stop();
 		Timer.set(0);
 	});
 	
-	$("#operations").find("#pauseplay").click(function()
+	$("#pauseplay").click(function()
 	{
 		if(Timer.isTicking())
 		{
@@ -26,6 +26,22 @@ $(document).ready(function()
 		else if(Timer.currentTime > 0)
 		{
 			Timer.start();
+		}
+	});
+	
+	$("#add").click(function()
+	{
+		if(Timer.isTicking())
+		{
+			Timer.add(60);
+		}
+	});
+	
+	$("#remove").click(function()
+	{
+		if(Timer.isTicking())
+		{
+			Timer.remove(60);
 		}
 	});
 });
@@ -55,10 +71,34 @@ var Timer = new function()
 		this._interval.terminate();
 		$("#pauseplay").removeClass("toggled");
 	}
+
+	this.add = function(time)
+	{
+		this.currentTime += time;
+
+		if(this.currentTime > this.originalTime)
+		{
+			this.currentTime = this.originalTime;
+		}
+
+		this._render();
+	}
+
+	this.remove = function(time)
+	{
+		this.currentTime -= time;
+
+		if(this.currentTime < 1)
+		{
+			this.currentTime = 1;
+		}
+
+		this._render();
+	}
 	
 	this.isTicking = function()
 	{
-		return this._interval.instance;
+		return this.currentTime > 0;
 	}
 	
 	this._tick = function()
@@ -69,6 +109,14 @@ var Timer = new function()
 		{
 			this.stop();
 			new Audio("bell.wav").play();
+		}
+
+		if(this.currentTime == 60 * 5)
+		{
+			if(this.originalTime == length_of_session["work"])
+			{
+				new Audio("ding.wav").play();
+			}
 		}
 		
 		this._render();
