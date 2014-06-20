@@ -11,13 +11,13 @@ $(document).ready(function()
 		Timer.start();
 	});
 	
-	$("#operations").find("#stop").click(function()
+	$("#stop").click(function()
 	{
 		Timer.stop();
 		Timer.set(0);
 	});
 	
-	$("#operations").find("#pauseplay").click(function()
+	$("#pauseplay").click(function()
 	{
 		if(Timer.isTicking())
 		{
@@ -26,6 +26,22 @@ $(document).ready(function()
 		else if(Timer.currentTime > 0)
 		{
 			Timer.start();
+		}
+	});
+	
+	$("#add").click(function()
+	{
+		if(Timer.isTicking())
+		{
+			Timer.add(60);
+		}
+	});
+	
+	$("#remove").click(function()
+	{
+		if(Timer.isTicking())
+		{
+			Timer.remove(60);
 		}
 	});
 });
@@ -55,10 +71,34 @@ var Timer = new function()
 		this._interval.terminate();
 		$("#pauseplay").removeClass("toggled");
 	}
+
+	this.add = function(time)
+	{
+		this.currentTime += time;
+
+		if(this.currentTime > this.originalTime)
+		{
+			this.currentTime = this.originalTime;
+		}
+
+		this._render();
+	}
+
+	this.remove = function(time)
+	{
+		this.currentTime -= time;
+
+		if(this.currentTime < 1)
+		{
+			this.currentTime = 1;
+		}
+
+		this._render();
+	}
 	
 	this.isTicking = function()
 	{
-		return this._interval.instance;
+		return this.currentTime > 0;
 	}
 	
 	this._tick = function()
