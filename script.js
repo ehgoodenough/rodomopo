@@ -48,9 +48,9 @@ $(document).ready(function()
 		}
 	});
 
-	$(document).keydown(function(event)
+	$(document).keypress(function(event)
 	{
-		if(event.keyCode == 32)
+		if(event.keyCode == 115)
 		{
 			if(Timer.isTiming())
 			{
