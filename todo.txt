@@ -2,7 +2,6 @@ todo: note the timestamps of each session.
 todo: record each set of timestamps in local storage.
 todo: allow users to add a description to the timestamps.
 
-todo: add some about text to the page.
 todo: ensure the layout is mobile responsive.
 todo: include a handful of keyboard shortcuts.
 todo: fix the sounds to be something cooler.

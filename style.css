@@ -239,6 +239,9 @@ header > h1 > img
 
 footer
 {
+	margin: auto;
+	max-width: 28rem;
+	
 	font-style: italic;
 	text-align: center;
 }
