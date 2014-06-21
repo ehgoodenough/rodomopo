@@ -47,6 +47,24 @@ $(document).ready(function()
 			Timer.remove(60);
 		}
 	});
+
+	$(document).keydown(function(event)
+	{
+		if(event.keyCode == 32)
+		{
+			if(Timer.isTiming())
+			{
+				if(Timer.isTicking())
+				{
+					Timer.stop();
+				}
+				else
+				{
+					Timer.start();
+				}
+			}
+		}
+	});
 });
 
 var Timer = new function()
