@@ -19,19 +19,22 @@ $(document).ready(function()
 	
 	$("#pauseplay").click(function()
 	{
-		if(Timer.isTicking())
+		if(Timer.isTiming())
 		{
-			Timer.stop();
-		}
-		else if(Timer.currentTime > 0)
-		{
-			Timer.start();
+			if(Timer.isTicking())
+			{
+				Timer.stop();
+			}
+			else
+			{
+				Timer.start();
+			}
 		}
 	});
 	
 	$("#add").click(function()
 	{
-		if(Timer.isTicking())
+		if(Timer.isTiming())
 		{
 			Timer.add(60);
 		}
@@ -39,9 +42,27 @@ $(document).ready(function()
 	
 	$("#remove").click(function()
 	{
-		if(Timer.isTicking())
+		if(Timer.isTiming())
 		{
 			Timer.remove(60);
+		}
+	});
+
+	$(document).keypress(function(event)
+	{
+		if(event.keyCode == 115)
+		{
+			if(Timer.isTiming())
+			{
+				if(Timer.isTicking())
+				{
+					Timer.stop();
+				}
+				else
+				{
+					Timer.start();
+				}
+			}
 		}
 	});
 });
@@ -61,15 +82,16 @@ var Timer = new function()
 	
 	this.start = function()
 	{
+		$("#pauseplay").addClass("toggled");
 		var tick = this._tick.bind(this);
 		this._interval.initiate(tick);
-		$("#pauseplay").addClass("toggled");
+		tick();
 	}
 	
 	this.stop = function()
 	{
-		this._interval.terminate();
 		$("#pauseplay").removeClass("toggled");
+		this._interval.terminate();
 	}
 
 	this.add = function(time)
@@ -95,10 +117,15 @@ var Timer = new function()
 
 		this._render();
 	}
+
+	this.isTiming = function()
+	{
+		return this.currentTime > 0;
+	}
 	
 	this.isTicking = function()
 	{
-		return this.currentTime > 0;
+		return this._interval.instance;
 	}
 	
 	this._tick = function()
