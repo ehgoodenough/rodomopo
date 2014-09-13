@@ -2,49 +2,51 @@ var length_of_session = {"work": 25 * 60, "short_break": 5 * 60, "long_break": 1
 
 $(document).ready(function()
 {
+	var timer = new Timer();
+	
 	$("#sessions").find("button").click(function()
 	{
 		var type = $(this).attr("id");
 		var length = length_of_session[type];
 		
-		Timer.set(length);
-		Timer.start();
+		timer.set(length);
+		timer.start();
 	});
 	
 	$("#stop").click(function()
 	{
-		Timer.stop();
-		Timer.set(0);
+		timer.stop();
+		timer.set(0);
 	});
 	
 	$("#pauseplay").click(function()
 	{
-		if(Timer.isTiming())
+		if(timer.isTiming())
 		{
-			if(Timer.isTicking())
+			if(timer.isTicking())
 			{
-				Timer.stop();
+				timer.stop();
 			}
 			else
 			{
-				Timer.start();
+				timer.start();
 			}
 		}
 	});
 	
 	$("#add").click(function()
 	{
-		if(Timer.isTiming())
+		if(timer.isTiming())
 		{
-			Timer.add(60);
+			timer.add(60);
 		}
 	});
 	
 	$("#remove").click(function()
 	{
-		if(Timer.isTiming())
+		if(timer.isTiming())
 		{
-			Timer.remove(60);
+			timer.remove(60);
 		}
 	});
 
@@ -52,22 +54,22 @@ $(document).ready(function()
 	{
 		if(event.keyCode == 115)
 		{
-			if(Timer.isTiming())
+			if(timer.isTiming())
 			{
-				if(Timer.isTicking())
+				if(timer.isTicking())
 				{
-					Timer.stop();
+					timer.stop();
 				}
 				else
 				{
-					Timer.start();
+					timer.start();
 				}
 			}
 		}
 	});
 });
 
-var Timer = new function()
+var Timer = function()
 {
 	this.currentTime = 0;
 	this.originalTime = 0;
