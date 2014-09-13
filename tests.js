@@ -7,16 +7,18 @@ describe("Timer", function()
 		timer = new Timer();
 	});
 
-	/*it("should be able to play a Song", function()
+	it("should toggle the button when playing or pausing", function()
 	{
-		player.play(song);
-		expect(player.currentlyPlayingSong).toEqual(song);
+		var pauseplay = $(response).find("#pauseplay");
 		
-		//demonstrates use of custom matcher
-		expect(player).toBePlaying(song);
+		timer.start();
+		expect(pauseplay).toHaveClass("toggled");
+		
+		timer.stop();
+		expect(pauseplay).not.toHaveClass("toggled");
 	});
 
-	describe("when song has been paused", function()
+	/*describe("when song has been paused", function()
 	{
 		beforeEach(function()
 		{
