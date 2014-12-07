@@ -12,7 +12,7 @@ html
     font-family: open-sans, calibri, sans-serif;
     
     background-color: #FCFEFD;
-    /*background-image: url("greyzz.png");*/
+    background-image: url("images/greyzz.png");
 }
 
 body
@@ -171,11 +171,11 @@ header > h1 > img
 #operations > button:focus {outline: none;}
 #operations > button:hover {cursor: pointer;}
 
-#operations > button#stop {background-image: url("stop.png");}
-#operations > button#pauseplay {background-image: url("play.png");}
-#operations > button#pauseplay.toggled {background-image: url("pause.png");}
-#operations > button#remove {background-image: url("previous.png");}
-#operations > button#add {background-image: url("next.png");}
+#operations > button#stop {background-image: url("images/stop.png");}
+#operations > button#pauseplay {background-image: url("images/play.png");}
+#operations > button#pauseplay.toggled {background-image: url("images/pause.png");}
+#operations > button#remove {background-image: url("images/previous.png");}
+#operations > button#add {background-image: url("images/next.png");}
 
 /* Information Sections */
 
