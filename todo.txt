@@ -1,9 +1,10 @@
-todo: note the timestamps of each session.
-todo: record each set of timestamps in local storage.
-todo: allow users to add a description to the timestamps.
-
-todo: ensure the layout is mobile responsive.
-todo: fix the sounds to be something cooler.
-
 todo: redesign the meter with your own markup.
 todo: have the meter be a different color near the end.
+
+todo: move all the assets (like sounds and fonts) into subdirs.
+todo: make use of a framework like react for the rendering?
+todo: find a better way to import the fonts.
+todo: utilize grid libraries for responsiveness (instead of doing it yourself)
+todo: finalize the naming conventions for methods in your timer class.
+todo: compile the application with some sort of mobile wrapper.
+todo: establish more boilerplate in the headers?
