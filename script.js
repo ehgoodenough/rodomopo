@@ -1,7 +1,13 @@
-var length_of_session = {
-    "work": 25 * 60,
-    "short_break": 5 * 60,
-    "long_break": 10 * 60
+var session = {
+    "work": {
+        length: 25 * 60,
+    },
+    "short_break": {
+        length: 5 * 60,
+    },
+    "long_break": {
+        length: 10 * 60
+    }
 };
 
 $(document).ready(function()
@@ -11,7 +17,7 @@ $(document).ready(function()
     $("#sessions").find("button").click(function()
     {
         var type = $(this).attr("id");
-        var length = length_of_session[type];
+        var length = session[type].length;
         
         timer.set(length);
         timer.start();
@@ -51,24 +57,6 @@ $(document).ready(function()
         if(timer.isTiming())
         {
             timer.remove(60);
-        }
-    });
-
-    $(document).keypress(function(event)
-    {
-        if(event.keyCode == 115)
-        {
-            if(timer.isTiming())
-            {
-                if(timer.isTicking())
-                {
-                    timer.stop();
-                }
-                else
-                {
-                    timer.start();
-                }
-            }
         }
     });
 });
@@ -146,7 +134,7 @@ var Timer = function()
 
         if(this.currentTime == 60 * 5)
         {
-            if(this.originalTime == length_of_session["work"])
+            if(this.originalTime == session["work"].length)
             {
                 new Audio("ding.wav").play();
             }
