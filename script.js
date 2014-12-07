@@ -63,6 +63,7 @@ $(document).ready(function()
 
 var Timer = function()
 {
+    this.deltaTime = 0;
     this.currentTime = 0;
     this.originalTime = 0;
     
@@ -77,6 +78,9 @@ var Timer = function()
     this.start = function()
     {
         $("#pauseplay").addClass("toggled");
+        
+        this.deltaTime = Date.now();
+        
         var tick = this._tick.bind(this);
         this._interval.initiate(tick);
         tick();
@@ -85,6 +89,7 @@ var Timer = function()
     this.stop = function()
     {
         $("#pauseplay").removeClass("toggled");
+        
         this._interval.terminate();
     }
 
@@ -124,7 +129,8 @@ var Timer = function()
     
     this._tick = function()
     {
-        this.currentTime -= 1;
+        this.currentTime -= (Date.now() - this.deltaTime) / 1000;
+        this.deltaTime = Date.now();
         
         if(this.currentTime <= 0)
         {
@@ -161,7 +167,7 @@ var Timer = function()
     this._render = function()
     {
         var minutes = Math.floor(this.currentTime / 60);
-        var seconds = String.pad(this.currentTime % 60);
+        var seconds = String.pad(Math.floor(this.currentTime % 60));
         
         var time = minutes + ":" + seconds;
         
