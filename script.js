@@ -132,7 +132,12 @@ var Timer = function()
         this.currentTime -= (Date.now() - this.deltaTime) / 1000;
         this.deltaTime = Date.now();
         
-        if(this.currentTime <= 0)
+        if(this.currentTime < 0)
+        {
+            this.currentTime = 0;
+        }
+        
+        if(this.currentTime == 0)
         {
             this.stop();
             new Audio("bell.wav").play();
