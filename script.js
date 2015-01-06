@@ -142,11 +142,14 @@ var Timer = function()
             this.stop();
             new Audio("bell.wav").play();
         }
-
-        if(this.currentTime == 60 * 5)
+        
+        if(this.currentTime <= (60 * 5) + 1
+        && this.currentTime >= (60 * 5) - 1)
         {
+            console.log("can ding")
             if(this.originalTime == session["work"].length)
             {
+                console.log("ding")
                 new Audio("ding.wav").play();
             }
         }
