@@ -1,2 +1,0 @@
-todo: redesign the meter with your own markup.
-todo: have the meter be a different color near the end.
