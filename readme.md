@@ -1,5 +1,3 @@
-# Rodomopo #
-
 ![Rodomopo](screenshot.png)
 
 A timer for the [Pomodoro Technique](http://pomodorotechnique.com).
